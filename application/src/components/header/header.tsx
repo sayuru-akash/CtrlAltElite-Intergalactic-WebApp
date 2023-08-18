@@ -69,7 +69,9 @@ function Header({ navigationLinks }: HeaderProps) {
                   </li>
                 ))}
               </ul>
+              
             </div>
+            <div className="clip-cut" />
           </div>
         </div>
         <div className="flex w-full lg:hidden items-start justify-start lg:order-2">
