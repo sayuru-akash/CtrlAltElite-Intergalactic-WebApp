@@ -4,4 +4,9 @@
 
 :root {
   background-color: #000000;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.border-header{
+  background-color: linear-gradient(135deg, #00C2FF 0%, #AE01FF 100%);
 }

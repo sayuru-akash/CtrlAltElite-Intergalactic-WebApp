@@ -1,47 +1,36 @@
-'use client';
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-interface NavLink {
-  text: string;
-  href: string;
-}
 
 interface HeaderProps {
-  // You can add any necessary props here
 }
 
 function Header(props: HeaderProps) {
-  const [navigationLinks, setNavigationLinks] = useState<NavLink[]>([]);
+  const navigationLinks = [
+    { text: "HOME", href: "/" },
+    { text: "BOOKING HISTORY", href: "/history" },
+    { text: "MY ACCOUNT", href: "/account" },
+  ];
 
-  useEffect(() => {
-    const fetchedLinks: NavLink[] = [
-      { text: "Home", href: "#" },
-      { text: "Company", href: "#" },
-    ];
-    setNavigationLinks(fetchedLinks);
-  }, []);
+  const borderStyle = {
+    border: '1px solid',
+    borderImage: 'linear-gradient(135deg, #00C2FF 0%, #AE01FF 100%)',
+    borderImageSlice: '1',
+  };
 
   return (
-    <header>
-      <nav className="px-4 lg:px-6 py-2.5">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link href="https://flowbite.com" passHref>
-            <a className="flex items-center">
+    <header className="border my-[2.94rem] mx-[3.44rem]"  style={borderStyle}>
+      <nav className=" px-[1.63rem] py-[1.94rem]">
+        <div className="flex flex-wrap justify-between items-center max-w-screen-xl">
+          <Link href="" passHref className="flex items-center">
               <Image
-                src="https://flowbite.com/docs/images/logo.svg"
-                width={10}
-                height={10}
+                src="/logo.png"
+                width={200}
+                height={100}
                 className="mr-3"
                 alt="Logo"
               />
-              <span className="self-center text-xl font-semibold whitespace-nowrap">
-                Intergalactic
-              </span>
-            </a>
           </Link>
-          <div className="flex items-center lg:order-2">
+          <div className="flex items-end lg:order-2">
             <button
               data-collapse-toggle="mobile-menu-2"
               type="button"
@@ -56,21 +45,18 @@ function Header(props: HeaderProps) {
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* ... SVG paths */}
               </svg>
             </button>
           </div>
           <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            className="hidden justify-end items-center lg:flex lg:order-1"
             id="mobile-menu-2"
           >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 ">
               {navigationLinks.map((link) => (
                 <li key={link.text}>
-                  <Link href={link.href} passHref>
-                    <a className="block py-2 pr-4 pl-3 rounded lg:p-0">
+                  <Link href={link.href} passHref className="block  px-[2.28rem] lg:p-0  text-white font-semibold text-lg">
                       {link.text}
-                    </a>
                   </Link>
                 </li>
               ))}
