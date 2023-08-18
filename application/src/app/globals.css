@@ -4,9 +4,11 @@
 
 :root {
   background-color: #000000;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
-.border-header{
-  background-color: linear-gradient(135deg, #00C2FF 0%, #AE01FF 100%);
+#header-border {
+  border: 1px solid;
+  border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
+  border-image-slice: 1;
 }
