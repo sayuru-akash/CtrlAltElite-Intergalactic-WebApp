@@ -14,22 +14,23 @@ interface SidebarProps {
 function Sidebar({ navigationLinks }: SidebarProps) {
   return (
     <>
-      <div className="h-full w-64 p-4">
-        <h2 className="text-2xl font-semibold mb-4">Admin Dashboard</h2>
+      <div className="flex flex-col h-full w-full lg:w-1/4 pl-4 pb-4">
+        <h2 className="text-indigo-500 text-2xl font-semibold mb-8">
+          Admin Dashboard
+        </h2>
         <ul className="space-y-2">
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 passHref
-                className="block px-[2.28rem] lg:p-0 text-white font-semibold text-lg"
+                className="block text-white font-semibold text-lg mb-4"
               >
                 <FontAwesomeIcon icon={link.icon} className="mr-4" />
                 {link.text}
               </Link>
             </li>
           ))}
-          {/* Add more sidebar links here */}
         </ul>
       </div>
     </>

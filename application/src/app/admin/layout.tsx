@@ -21,6 +21,7 @@ export default function AdminLayout({
   return (
     <div className="flex flex-wrap items-stretch w-full px-[1.63rem] py-[1.94rem]">
       <Sidebar navigationLinks={navigationLinks} />
+      {children}
     </div>
   );
 }

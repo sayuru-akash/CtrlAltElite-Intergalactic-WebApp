@@ -25,7 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* Pass the navigationLinks to the Header component */}
         <Header navigationLinks={navigationLinks} />
         {children}
       </body>

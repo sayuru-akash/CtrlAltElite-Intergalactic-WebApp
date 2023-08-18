@@ -69,7 +69,6 @@ function Header({ navigationLinks }: HeaderProps) {
                   </li>
                 ))}
               </ul>
-              
             </div>
             <div className="clip-cut" />
           </div>
