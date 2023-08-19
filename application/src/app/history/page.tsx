@@ -5,7 +5,7 @@ export default function History() {
   return (
     <section className="">
         <div className="relative flex flex-col items-center justify-end h-[700px] px-9 " style={{ backgroundImage: `url(/images/hero.png)`, backgroundSize: "cover", backgroundPosition: "center" }}>
-                <p className="text-4xl lg:text-5xl font-bold text-white text-center mb-12">Booking History</p>
+                <p className="text-4xl lg:text-5xl font-bold text-white text-center mb-12">Reservation History</p>
         </div>
         <div className="flex flex-col lg:flex-row lg-flex-row justify-between gap-8  text-xl font-normal text-white mt-16 mx-4 lg:mx-14">
             <div 
