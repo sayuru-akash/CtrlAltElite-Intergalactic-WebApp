@@ -22,11 +22,11 @@ function Header({ navigationLinks }: HeaderProps) {
   };
 
   return (
-    <header>
-      <nav className="flex flex-wrap items-stretch w-full px-[1.63rem] py-[1.94rem]">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <nav className="flex flex-wrap items-stretch w-full px-7 py-7">
         <div
-          className="flex flex-wrap items-stretch w-full px-[1.63rem] py-[1.94rem] border-gradient"
-          id="header-border"
+          className="flex flex-wrap items-stretch w-full px-7 py-7 border-gradient bg-black bg-opacity-80 shadow-lg"
+          id="glowing-border"
         >
           <div className="flex flex-wrap justify-between items-center w-3/4 lg:w-1/4">
             <Link href="/" passHref className="flex items-center">
@@ -47,7 +47,7 @@ function Header({ navigationLinks }: HeaderProps) {
               onClick={toggleMobileMenu}
             >
               <span className="sr-only">Open main menu</span>
-              <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon icon={faBars}/>
             </div>
 
             <div
@@ -56,13 +56,13 @@ function Header({ navigationLinks }: HeaderProps) {
               } justify-end items-center lg:order-1 hidden lg:flex`}
               id="mobile-menu-1"
             >
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-16 lg:mt-0">
                 {navigationLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       passHref
-                      className="block px-[2.28rem] lg:p-0 text-white font-semibold text-lg"
+                      className="block px-9 lg:p-0 text-white font-semibold text-lg"
                     >
                       {link.text}
                     </Link>
@@ -80,7 +80,7 @@ function Header({ navigationLinks }: HeaderProps) {
             } justify-start items-end lg:order-1 w-full  `}
             id="mobile-menu-2"
           >
-            <ul className="w-full flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-00">
+            <ul className="w-full flex flex-col mt-4 font-medium lg:flex-row lg:mt-00">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <Link

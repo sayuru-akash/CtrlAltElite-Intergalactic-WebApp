@@ -5,6 +5,7 @@ import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Footer from "@/components/footer/footer";
 config.autoAddCss = false;
 
 const navigationLinks = [
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body>
         <Header navigationLinks={navigationLinks} />
         {children}
+        <Footer navigationLinks={navigationLinks} />
       </body>
     </html>
   );
