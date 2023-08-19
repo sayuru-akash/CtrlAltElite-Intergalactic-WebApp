@@ -7,19 +7,19 @@ export default function Info() {
       <div className="relative flex flex-col items-center justify-end h-[700px] px-9 lg:px-14" style={{ backgroundImage: `url(/images/pandora.png)`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-12 ">Complete Booking</h1>
        </div>
-       <div className="flex flex-col lg:flex-row mx-14 gap-20 my-16 text-white ">
-            <div id="gradient-border" className="pt-16 pb-14 px-28 flex flex-row justify-between lg:hidden">
+       <div className="flex flex-col lg:flex-row mx-4 lg:mx-14 gap-20 my-4 lg:my-16 text-white ">
+            <div id="gradient-border" className="p-4 lg:p-16  px-4 lg:px-28 flex flex-row justify-between lg:hidden">
+                    <div className="flex-flex-col">
+                        <Image src="/images/rocket .png" className="w-48 h-48" alt="rocket" width={500} height={500}/>
+                    </div>
                     <div className="flex flex-col">
-                        <p className="font-bold text-3xl  mb-7">
-                        <span className="text-lg">Lockheed Dreamcatcher</span><br />
+                        <p className="font-bold text-xl  mb-7">
+                        <span className="text-sm">Lockheed Dreamcatcher</span><br />
                         Earth to Pandora
                         </p>
-                        <p className="font-semibold text-base mb-5">Departure Date: <span className="font-light">25th Aug, 3158</span></p>
-                        <p className="font-semibold text-base mb-5">No. of Passengers: <span className="font-light">7</span></p>
-                        <p className="font-semibold text-base mb-5">Travel Time: <span className="font-light">14 Days</span></p>
-                    </div>
-                    <div className="flex-flex-col">
-                        <Image src="/images/rocket .png" className="w-52 h-52" alt="rocket" width={500} height={500}/>
+                        <p className="font-semibold text-sm mb-5">Departure Date: <span className="font-light">25th Aug, 3158</span></p>
+                        <p className="font-semibold text-sm mb-5">No. of Passengers: <span className="font-light">7</span></p>
+                        <p className="font-semibold text-sm mb-5">Travel Time: <span className="font-light">14 Days</span></p>
                     </div>
                 </div>
             <div className="flex flex-col w-full lg:w-1/2">
@@ -33,21 +33,21 @@ export default function Info() {
                 </form>
             </div>
             <div className="flex flex-col w-full lg:w-1/2 sm :hidden">
-                {/* <div
-                id="gradient-border" className="pt-16  pb-14 lg:px-28 px-4 flex flex-row justify-between">
-                    <div className="flex-flex-col">
-                        <Image src="/images/rocket .png" className="w-48 h-48" alt="rocket" width={500} height={500}/>
-                    </div>
+                <div
+                id="gradient-border" className="pt-16 pb-14 px-10 flex flex-row justify-between">
                     <div className="flex flex-col">
-                        <p className="font-bold text-3xl  mb-7">
-                        <span className="text-lg">Lockheed Dreamcatcher</span><br />
+                        <p className="font-bold text-4xl  mb-7">
+                        <span className="text-xl">Lockheed Dreamcatcher</span><br />
                         Earth to Pandora
                         </p>
                         <p className="font-semibold text-base mb-5">Departure Date: <span className="font-light">25th Aug, 3158</span></p>
                         <p className="font-semibold text-base mb-5">No. of Passengers: <span className="font-light">7</span></p>
                         <p className="font-semibold text-base mb-5">Travel Time: <span className="font-light">14 Days</span></p>
                     </div>
-                </div> */}
+                    <div className="flex-flex-col">
+                        <Image src="/images/rocket .png" className="w-56 h-56" alt="rocket" width={500} height={500}/>
+                    </div>
+                </div>
                 <div className="flex flex-col content-center justify-center px-7" id="gradient-border">
                     <div className="flex flex-row justify-between items-center mt-10 mb-5">
                         <p className="text-xl font-light">Total</p>
@@ -60,5 +60,4 @@ export default function Info() {
             </div>
        </div>
     </section>
-  );
-}
+  )}
