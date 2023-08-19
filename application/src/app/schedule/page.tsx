@@ -48,7 +48,7 @@ export default function Schedule() {
                 </div>
                 <div className="w-0.5 h-16 bg-gray-500 sm:mx-3.5"></div>
                 <div className="flex flex-row justify-between items-center">
-                    <FontAwesomeIcon icon={faSearch} className="text-3xl px-3.5"/>
+                    <FontAwesomeIcon icon={faSearch} className="text:xl lg:text-3xl px-1 lg:px-3.5"/>
                 </div>
             </div>
         </div>
@@ -67,8 +67,8 @@ export default function Schedule() {
             <div className="flex flex-row justify-between content-center w-full lg:w-[581px]"
             id="glowing-border"
             >
-                <div>
-                    <Image src="/images/bluerocket.png" className="h-48 w-32 my-12 mx-5" alt="rocket" width={500} height={500}/>
+                <div className="flex flex-col justify-center content-center">
+                    <Image src="/images/bluerocket.png" className="h-32 lg:h-48 w-28 lg:w-32 my-6 lg:my-12 mx-5" alt="rocket" width={500} height={500}/>
                 </div>
                 <div className="flex flex-col justify-between content-center my-16">
                     <p className="font-semibold text-xl mb-3">SpaceX Starship</p>
@@ -85,8 +85,8 @@ export default function Schedule() {
             <div className="flex flex-row justify-between content-center w-full lg:w-[581px]"
             id="glowing-border"
             >
-                <div>
-                    <Image src="/images/bluerocket.png" className="h-48 w-32 my-12 mx-5" alt="rocket" width={500} height={500}/>
+                <div className="flex flex-col justify-center content-center">
+                    <Image src="/images/bluerocket.png" className="h-32 lg:h-48 w-28 lg:w-32 my-6 lf:my-12 mx-5" alt="rocket" width={500} height={500}/>
                 </div>
                 <div className="flex flex-col justify-between content-center my-16">
                     <p className="font-semibold text-xl mb-3">SpaceX Starship</p>
