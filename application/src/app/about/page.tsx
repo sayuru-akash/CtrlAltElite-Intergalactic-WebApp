@@ -19,7 +19,7 @@ export default function About() {
                 About Pandora
             </Link>
         </div>
-       <div className="px-9 lg:px-14 text-white">
+       <div className="px-9 lg:px-36 text-white">
             <p className="font-bold text-2xl mb-6">Description</p>
             <p className="font-normal text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p className="font-bold text-2xl mb-6">Culture</p>
@@ -28,7 +28,7 @@ export default function About() {
             <p className="font-normal text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p className="font-bold text-2xl mb-6">Gallery</p>
             <Image src="/images/pandora.png" alt="pandora"width={1500} height={800}
-            className="w-full mb-12"
+            className="w-full  mb-12"
             />
        </div>
     </section>
