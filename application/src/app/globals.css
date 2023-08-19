@@ -19,6 +19,12 @@
   border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
   border-image-slice: 1;
 }
+#text-gradient{
+  background: var(--gradient, linear-gradient(135deg, #00C2FF 0%, #AE01FF 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .clip-cut::before {
   content: "";
