@@ -32,7 +32,7 @@ function Flights() {
             <div 
             className="flex flex-col justify-end content-center text-left gradient-border rounded-md py-9 px-5 h-96 w-full"
             id="glowing-border"
-            style={{ backgroundImage: `url(/images/hero.png)`, backgroundSize: "cover", backgroundPosition: "center" }}
+            style={{ backgroundImage: `url(/images/pandora.png)`, backgroundSize: "cover", backgroundPosition: "center" }}
             >
                 <p className="font-bold text-2xl mb-3.5">COOPER’S PLANET</p>
                 <p className="font-thin text-xl mb-5">Change Departure Planet</p>
