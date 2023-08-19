@@ -19,39 +19,18 @@ export default function About() {
                 About Pandora
             </Link>
         </div>
-        <div className="mx-9 lg:mx-14 flex flex-col">
-            <p className="text-white font-extralight text-xl mb-2.5">Search Flights by Departure date and number of passengers</p>
-            <div className="flex flex-row justify-between content-center px-4 lg:px-16 py-6 text-white "
-            id="glowing-border">
-                <div className="flex flex-row justify-between items-center">
-                    <FontAwesomeIcon icon={faCalendar} className="text-xl lg:text-3xl px-1  lg:px-3.5"/>
-                    <div className="flex flex-col px-3.5">
-                        <p className="font-extralight  text-sm lg:text-xl">
-                            Departure Date
-                        </p>
-                        <p className="text-xl lg:text-3xl font-bold">
-                        23, Aug
-                        </p>
-                    </div>
-                    </div>
-                <div className="flex flex-row justify-between items-center">
-                <div className="w-0.5 h-16 bg-gray-500 sm:mx-3.5"></div>
-                    <FontAwesomeIcon icon={faUsers} className="text:xl lg:text-3xl px-1 lg:px-3.5"/>
-                    <div className="flex flex-col px-3.5">
-                        <p className="font-extralight  text-sm lg:text-xl">
-                        No. of Passengers
-                        </p>
-                        <p className="text-xl lg:text-3xl font-bold">
-                        7
-                        </p>
-                    </div>
-                </div>
-                <div className="w-0.5 h-16 bg-gray-500 sm:mx-3.5"></div>
-                <div className="flex flex-row justify-between items-center">
-                    <FontAwesomeIcon icon={faSearch} className="text-3xl px-3.5"/>
-                </div>
-            </div>
-        </div>
+       <div className="px-9 lg:px-14 text-white">
+            <p className="font-bold text-2xl mb-6">Description</p>
+            <p className="font-normal text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p className="font-bold text-2xl mb-6">Culture</p>
+            <p className="font-normal text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p className="font-bold text-2xl mb-6">Weather</p>
+            <p className="font-normal text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p className="font-bold text-2xl mb-6">Gallery</p>
+            <Image src="/images/pandora.png" alt="pandora"width={1500} height={800}
+            className="w-full mb-12"
+            />
+       </div>
     </section>
   );
 }
