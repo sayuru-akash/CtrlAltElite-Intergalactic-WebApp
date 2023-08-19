@@ -19,6 +19,10 @@
   border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
   border-image-slice: 1;
 }
+
+#gradient-button {
+  background: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
+}
 #text-gradient{
   background: var(--gradient, linear-gradient(135deg, #00C2FF 0%, #AE01FF 100%));
   background-clip: text;
