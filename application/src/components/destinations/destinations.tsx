@@ -19,14 +19,10 @@ function Destinations() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [filteredDestinations, setFilteredDestinations] = useState<
     Destination[]
-  >([
-    {
-      _id: "",
-      destination_name: "",
-      destination_cover_img: "",
-      description: "",
-    },
-  ]);
+  >([]);
+  const [currentDestinations, setCurrentDestinations] = useState<Destination[]>(
+    []
+  );
 
   useEffect(() => {
     fetch("/api/destinations")
@@ -53,10 +49,19 @@ function Destinations() {
 
   const indexOfLastDestination = currentPage * destinationsPerPage;
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
-  const currentDestinations = filteredDestinations?.slice(
+
+  useEffect(() => {
+    const currentDestinations = filteredDestinations?.slice(
+      indexOfFirstDestination,
+      indexOfLastDestination
+    );
+    setCurrentDestinations(currentDestinations);
+  }, [
+    currentPage,
+    filteredDestinations,
     indexOfFirstDestination,
-    indexOfLastDestination
-  );
+    indexOfLastDestination,
+  ]);
 
   const totalPages = Math.ceil(
     filteredDestinations?.length / destinationsPerPage
