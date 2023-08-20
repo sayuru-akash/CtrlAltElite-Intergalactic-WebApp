@@ -120,9 +120,9 @@ export default function Success() {
             </div>
             <div className="flex-flex-col">
               <Image
-                src={mode?.image || "/images/rocket.png"}
+                src={mode?.image || ""}
                 className="w-40 h-40"
-                alt="rocket"
+                alt="mode of travel"
                 width={500}
                 height={500}
               />

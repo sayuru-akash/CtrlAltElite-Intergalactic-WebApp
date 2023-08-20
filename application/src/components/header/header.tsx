@@ -47,7 +47,7 @@ function Header({ navigationLinks }: HeaderProps) {
               onClick={toggleMobileMenu}
             >
               <span className="sr-only">Open main menu</span>
-              <FontAwesomeIcon icon={faBars}/>
+              <FontAwesomeIcon icon={faBars} />
             </div>
 
             <div
@@ -80,13 +80,13 @@ function Header({ navigationLinks }: HeaderProps) {
             } justify-start items-end lg:order-1 w-full  `}
             id="mobile-menu-2"
           >
-            <ul className="w-full flex flex-col mt-4 font-medium lg:flex-row lg:mt-00">
+            <ul className="w-full flex bg-black flex-col font-medium lg:flex-row rounded-md">
               {navigationLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="border-b border-b-white">
                   <Link
                     href={link.href}
                     passHref
-                    className="block py-4 text-white font-semibold text-lg"
+                    className="block p-4 text-white font-semibold text-lg"
                   >
                     {link.text}
                   </Link>

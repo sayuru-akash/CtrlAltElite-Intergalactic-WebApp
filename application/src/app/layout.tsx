@@ -10,7 +10,7 @@ config.autoAddCss = false;
 
 const navigationLinks = [
   { text: "HOME", href: "/" },
-  { text: "BOOKING HISTORY", href: "/history" },
+  { text: "BOOKING HISTORY", href: "/booking-history" },
   { text: "MY ACCOUNT", href: "/account" },
 ];
 

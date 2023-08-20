@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { getCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -26,7 +27,28 @@ interface CheckoutData {
   passengers: Number;
 }
 
+interface User {
+  _id: string;
+  fname: string;
+  lname: string;
+  email: string;
+}
+
 export default function Checkout() {
+  const userCookie = getCookie("user");
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/user?id=${userCookie}`)
+      .then(async (res) => {
+        const json = await res.json();
+        setUser(json);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userCookie]);
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
@@ -51,7 +73,7 @@ export default function Checkout() {
       residency: residency,
       destination_id: destination?._id,
       mode_id: mode?._id,
-      user_id: "user-1",
+      user_id: user?._id,
       departure_date: checkoutData?.departure_date,
       passengers: Number(checkoutData?.passengers),
       total: Number(total),
@@ -136,7 +158,7 @@ export default function Checkout() {
               <div className="flex-flex-col">
                 <Image
                   src={mode?.image}
-                  className="w-48 h-48"
+                  className="w-24 h-48 object-contain"
                   alt="rocket"
                   width={500}
                   height={500}
@@ -294,7 +316,7 @@ export default function Checkout() {
                     <div className="flex-flex-col">
                       <Image
                         src={mode?.image}
-                        className="w-56 h-56"
+                        className="w-36 h-48 object-contain"
                         alt="rocket"
                         width={500}
                         height={500}

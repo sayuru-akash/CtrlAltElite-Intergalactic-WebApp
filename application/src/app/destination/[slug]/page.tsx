@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { getCookie } from "cookies-next";
 import {
   faCalendar,
   faChevronRight,
@@ -15,7 +16,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import Link from "next/link";
 import dayjs, { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -44,11 +44,32 @@ interface TransportModes {
   max_capacity: Number;
 }
 
+interface User {
+  _id: string;
+  fname: string;
+  lname: string;
+  email: string;
+}
+
 export default function DestinationSingle({
   params,
 }: {
   params: { slug: string };
 }) {
+  const userCookie = getCookie("user");
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/user?id=${userCookie}`)
+      .then(async (res) => {
+        const json = await res.json();
+        setUser(json);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userCookie]);
+
   const [destination, setDestination] = useState<Destination>();
   const [transportModes, setTransportModes] = useState<TransportModes[]>([]);
   const [showSchedule, setShowSchedule] = useState(true);
@@ -74,7 +95,7 @@ export default function DestinationSingle({
     await fetch(
       `/api/checkout?destination_id=${destination?._id}&mode_id=${
         mode._id
-      }&user_id=1&departure_date=${date?.format(
+      }&user_id=${user?._id}&departure_date=${date?.format(
         "YYYY-MM-DD"
       )}&passengers=${passengers}`
     )
