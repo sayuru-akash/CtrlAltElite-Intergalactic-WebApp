@@ -51,11 +51,11 @@ function Destinations() {
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
 
   useEffect(() => {
-    const currentDestinations = filteredDestinations?.slice(
+    const current = filteredDestinations?.slice(
       indexOfFirstDestination,
       indexOfLastDestination
     );
-    setCurrentDestinations(currentDestinations);
+    setCurrentDestinations(current);
   }, [
     currentPage,
     filteredDestinations,
