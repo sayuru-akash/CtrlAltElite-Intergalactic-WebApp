@@ -24,20 +24,14 @@ function Destinations() {
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState(" ");
+  const [searchQuery, setSearchQuery] = useState("");
   const destinationsPerPage = 2;
 
-  let filteredDestinations: Destination[] = [];
-
-  try {
-    filteredDestinations = destinations?.filter((destination) =>
-      destination.destination_name
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase())
-    );
-  } catch (err) {
-    console.log(err);
-  }
+  const filteredDestinations = destinations?.filter((destination) =>
+    destination.destination_name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
 
   const indexOfLastDestination = currentPage * destinationsPerPage;
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
