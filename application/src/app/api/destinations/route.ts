@@ -34,6 +34,14 @@ async function connectToDatabase() {
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     await connectToDatabase();
+
+    const url = new URL(req.nextUrl);
+    const id = url.searchParams.get("id");
+
+    if (id != "" && id != null) {
+      const destination = await Destination.findById(id);
+      return NextResponse.json(destination);
+    }
     const destinations = await Destination.find();
     return NextResponse.json(destinations);
   } catch (err) {

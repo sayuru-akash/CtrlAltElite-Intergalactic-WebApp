@@ -15,6 +15,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
+import dayjs, { Dayjs } from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import TextField from "@mui/material/TextField";
 
 interface Destination {
   _id: string;
@@ -47,6 +53,8 @@ export default function DestinationSingle({
   const [transportModes, setTransportModes] = useState<TransportModes[]>([]);
   const [showSchedule, setShowSchedule] = useState(true);
   const [showAbout, setShowAbout] = useState(false);
+  const [date, setDate] = useState<Dayjs | null>(dayjs("2022-04-17"));
+  const [passengers, setPassengers] = useState<Number>(1);
 
   useEffect(() => {
     fetch(`/api/destination?id=${params.slug}`)
@@ -59,6 +67,24 @@ export default function DestinationSingle({
       .then((response) => response.json())
       .then((data) => setTransportModes(data));
   }, [params.slug]);
+
+  let orderData: any;
+
+  const checkout = async (mode: TransportModes) => {
+    await fetch(
+      `/api/checkout?destination_id=${destination?._id}&mode_id=${
+        mode._id
+      }&user_id=1&departure_date=${date?.format(
+        "YYYY-MM-DD"
+      )}&passengers=${passengers}`
+    )
+      .then((response) => response.json())
+      .then((data) => (orderData = data));
+
+    if (orderData.status === "success") {
+      window.location.href = orderData.redirect_url;
+    }
+  };
 
   return (
     <section>
@@ -119,7 +145,15 @@ export default function DestinationSingle({
                   <p className="font-extralight w-full text-sm lg:text-xl">
                     Departure Date
                   </p>
-                  <p className="text-xl lg:text-3xl font-bold">23, Aug</p>
+                  <p className="text-xl lg:text-3xl font-bold">
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DatePicker
+                        className="w-full bg-gray-200 rounded-lg"
+                        value={date}
+                        onChange={(date) => setDate(date)}
+                      />
+                    </LocalizationProvider>
+                  </p>
                 </div>
               </div>
               <div className="flex flex-row justify-between items-center">
@@ -132,7 +166,19 @@ export default function DestinationSingle({
                   <p className="font-extralight w-full text-sm lg:text-xl">
                     No. of Passengers
                   </p>
-                  <p className="text-xl lg:text-3xl font-bold">7</p>
+                  <p className="text-xl lg:text-3xl font-bold">
+                    <TextField
+                      id="outlined-number"
+                      type="number"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      variant="outlined"
+                      className="w-full bg-gray-200 rounded-lg"
+                      value={passengers}
+                      onChange={(e) => setPassengers(Number(e.target.value))}
+                    />
+                  </p>
                 </div>
               </div>
               <div className="w-0.5 h-16 bg-gray-500 sm:mx-3.5 hidden lg:flex"></div>
@@ -200,12 +246,18 @@ export default function DestinationSingle({
                       className="text-3xl font-semibold text-white"
                       id="text-gradient"
                     >
-                      ${transportMode.price.toString()}
+                      ${transportMode.price.toString()} / pp
                     </p>
                   </div>
-                  <div className="flex flex-col justify-center content-center">
-                    <FontAwesomeIcon icon={faChevronRight} className="mr-6" />
-                  </div>
+                  <button
+                    onClick={() => checkout(transportMode)}
+                    className="flex flex-col h-full justify-center content-center"
+                  >
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
+                      className="mr-6 animate-pulse"
+                    />
+                  </button>
                 </div>
               </div>
             ))}
