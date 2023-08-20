@@ -38,9 +38,9 @@ interface Mode {
 }
 
 export default function BookingHistory() {
-  const userCookie = getCookie("user");
   const router = useRouter();
-
+  const userCookie = getCookie("user");
+  
   if (!userCookie) {
     router.push("/auth/login");
   }
@@ -104,7 +104,7 @@ export default function BookingHistory() {
       <div
         className="relative flex flex-col items-center justify-end h-[450px] px-9 bg-cover bg-center"
         style={{
-          backgroundImage: `url("https://i.ibb.co/C1XVgvC/planets.gif")`,
+          backgroundImage: `url(/images/hero-new.jpg)`,
         }}
       >
         <p className="w-full bg-black bg-opacity-30 text-4xl lg:text-5xl font-bold text-white text-center py-4">
@@ -120,7 +120,7 @@ export default function BookingHistory() {
         {reservations?.map((reservation) => (
           <div
             className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8"
-            key={reservation._id}
+            key={reservation?._id}
           >
             <div
               className="flex flex-col justify-start items-start text-left gradient-border rounded-md py-9 px-5 h-96 w-full"

@@ -15,10 +15,10 @@ interface User {
 }
 
 export default function Account() {
+  const router = useRouter();
   const userCookie = getCookie("user");
 
   const [user, setUser] = useState<User>();
-  const router = useRouter();
 
   if (!userCookie) {
     router.push("/auth/login");
@@ -47,7 +47,7 @@ export default function Account() {
       <div
         className="relative flex flex-col content-end justify-end h-[450px] px-4 lg:px-14"
         style={{
-          backgroundImage: `url("https://i.ibb.co/C1XVgvC/planets.gif")`,
+          backgroundImage: `url(/images/hero-new.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
