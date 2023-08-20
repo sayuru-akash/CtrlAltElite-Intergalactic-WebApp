@@ -35,13 +35,13 @@ function Destinations() {
 
   const indexOfLastDestination = currentPage * destinationsPerPage;
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
-  const currentDestinations = filteredDestinations.slice(
+  const currentDestinations = filteredDestinations?.slice(
     indexOfFirstDestination,
     indexOfLastDestination
   );
 
   const totalPages = Math.ceil(
-    filteredDestinations.length / destinationsPerPage
+    filteredDestinations?.length / destinationsPerPage
   );
 
   const handlePageChange = (newPage: number) => {
@@ -99,23 +99,23 @@ function Destinations() {
         {currentDestinations.map((destination) => (
           <div
             className="flex flex-row h-96 w-full lg:w-1/2 p-4"
-            key={destination._id}
+            key={destination?._id}
           >
             <div
               className="flex flex-col justify-end bg-cover bg-center content-center text-left gradient-border rounded-md py-9 px-5 h-full w-full"
               id="glowing-border"
               style={{
-                backgroundImage: `url(${destination.destination_cover_img})`,
+                backgroundImage: `url(${destination?.destination_cover_img})`,
               }}
             >
               <p className="font-bold text-2xl mb-3.5">
-                {destination.destination_name}
+                {destination?.destination_name}
               </p>
               <p className="font-thin text-xl mb-5">
-                {destination.description.slice(0, 100)}...
+                {destination?.description.slice(0, 100)}...
               </p>
               <Link
-                href={`/destination/${destination._id}`}
+                href={`/destination/${destination?._id}`}
                 className="text-yellow-200 font-bold"
               >
                 VIEW FLIGHTS{" "}
