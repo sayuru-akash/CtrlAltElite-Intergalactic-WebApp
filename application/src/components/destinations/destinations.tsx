@@ -130,7 +130,7 @@ function Destinations() {
                 {destination?.destination_name}
               </p>
               <p className="font-thin text-xl mb-5">
-                {destination?.description.slice(0, 100)}...
+                {destination?.description?.slice(0, 100)}...
               </p>
               <Link
                 href={`/destination/${destination?._id}`}
