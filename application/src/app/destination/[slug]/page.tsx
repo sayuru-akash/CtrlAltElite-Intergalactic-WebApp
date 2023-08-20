@@ -57,6 +57,7 @@ export default function DestinationSingle({
   params: { slug: string };
 }) {
   const userCookie = getCookie("user");
+
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
@@ -187,7 +188,7 @@ export default function DestinationSingle({
                   <p className="font-extralight w-full text-sm lg:text-xl">
                     No. of Passengers
                   </p>
-                  <p className="text-xl lg:text-3xl font-bold">
+                  <div className="text-xl lg:text-3xl font-bold">
                     <TextField
                       id="outlined-number"
                       type="number"
@@ -199,7 +200,7 @@ export default function DestinationSingle({
                       value={passengers}
                       onChange={(e) => setPassengers(Number(e.target.value))}
                     />
-                  </p>
+                  </div>
                 </div>
               </div>
               <div className="w-0.5 h-16 bg-gray-500 sm:mx-3.5 hidden lg:flex"></div>
@@ -227,6 +228,11 @@ export default function DestinationSingle({
             </div>
           </div>
           <div className="mx-4 lg:mx-14 flex flex-col lg:flex-row flex-wrap justify-between text-white">
+            {transportModes.length === 0 && (
+              <p className="text-red-500 text-xl font-semibold">
+                No transport modes are currently available for this destination
+              </p>
+            )}
             {transportModes.map((transportMode) => (
               <div
                 className="flex flex-row content-center w-full lg:w-1/2 mb-4 lg:mb-0 p-0 lg:p-4"
@@ -329,13 +335,13 @@ export default function DestinationSingle({
             )}
             {destination?.weather} until v3
           </p>
-          <p className="font-bold text-2xl mb-6">Gallery</p>
+          <p className="font-bold text-2xl mb-6">Attraction Gallery</p>
           <Image
-            src="/images/pandora.png"
-            alt="pandora"
-            width={1500}
-            height={800}
-            className="w-full  mb-12"
+            src={destination?.destination_globe_img || "/images/pandora.png"}
+            alt="gallery"
+            width={1800}
+            height={1200}
+            className="w-full h-64 mb-12 object-contain"
           />
         </div>
       )}

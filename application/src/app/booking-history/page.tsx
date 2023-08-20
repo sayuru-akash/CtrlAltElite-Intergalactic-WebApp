@@ -1,6 +1,7 @@
 "use client";
 import { getCookie } from "cookies-next";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface User {
   _id: string;
@@ -38,6 +39,11 @@ interface Mode {
 
 export default function BookingHistory() {
   const userCookie = getCookie("user");
+  const router = useRouter();
+
+  if (!userCookie) {
+    router.push("/auth/login");
+  }
 
   const [user, setUser] = useState<User>();
   const [reservations, setReservations] = useState<Reservation[]>();
@@ -96,25 +102,26 @@ export default function BookingHistory() {
   return (
     <section className="">
       <div
-        className="relative flex flex-col items-center justify-end h-[400px] lg:h[650px] px-9 "
+        className="relative flex flex-col items-center justify-end h-[450px] px-9 bg-cover bg-center"
         style={{
-          backgroundImage: `url(/images/hero.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundImage: `url("https://i.ibb.co/C1XVgvC/planets.gif")`,
         }}
       >
-        <p className="text-4xl lg:text-5xl font-bold text-white text-center mb-4">
+        <p className="w-full bg-black bg-opacity-30 text-4xl lg:text-5xl font-bold text-white text-center py-4">
           Reservation History
         </p>
-        <p className="text-white font-bold text-lg lowercase mb-12">
+        <p className="w-full flex bg-black bg-opacity-30 items-center justify-center text-white font-bold text-lg lowercase pb-12">
           {"for user ("}
           {user?.email}
           {")"}
         </p>
       </div>
-      <div className="flex flex-col lg:flex-row lg-flex-row justify-between gap-8  text-xl font-normal text-white mt-16 mx-4 lg:mx-14">
+      <div className="flex flex-col lg:flex-row flex-wrap justify-between w-full text-xl font-normal text-white mt-16">
         {reservations?.map((reservation) => (
-          <>
+          <div
+            className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8"
+            key={reservation._id}
+          >
             <div
               className="flex flex-col justify-start items-start text-left gradient-border rounded-md py-9 px-5 h-96 w-full"
               id="glowing-border"
@@ -154,7 +161,7 @@ export default function BookingHistory() {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </section>

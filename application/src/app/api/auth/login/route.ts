@@ -33,21 +33,18 @@ export async function POST(req: NextRequest, res: NextResponse) {
     await connectToDatabase();
     const data = await req.json();
     //check if user exists
-    const existingUser = await User.findOne({ email: data.email });
+    const existingUser = await User.findOne({
+      email: data.email,
+      password: data.password,
+    });
     if (!existingUser) {
       return NextResponse.json({
-        message: "User does not exist",
+        message: "User mismatch",
       });
     }
-    // check if password matches
-    if (existingUser.password != data.password) {
-      return NextResponse.json({
-        message: "Password does not match",
-      });
-    } else {
-      const uid = existingUser._id;
-      return NextResponse.json({ id: uid });
-    }
+
+    const uid = existingUser._id;
+    return NextResponse.json({ id: uid });
   } catch (err) {
     return NextResponse.json({
       message: "Error adding user to the database",

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { getCookie } from "cookies-next";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 interface Destination {
@@ -36,6 +36,12 @@ interface User {
 
 export default function Checkout() {
   const userCookie = getCookie("user");
+  const router = useRouter();
+
+  if (!userCookie) {
+    router.push("/auth/login");
+  }
+
   const [user, setUser] = useState<User>();
 
   useEffect(() => {

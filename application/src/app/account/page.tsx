@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
-import { getCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserEdit, faBookBookmark } from "@fortawesome/free-solid-svg-icons";
 
 interface User {
   _id: string;
@@ -15,6 +18,11 @@ export default function Account() {
   const userCookie = getCookie("user");
 
   const [user, setUser] = useState<User>();
+  const router = useRouter();
+
+  if (!userCookie) {
+    router.push("/auth/login");
+  }
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/user?id=${userCookie}`)
@@ -27,12 +35,19 @@ export default function Account() {
       });
   }, [userCookie]);
 
+  const logOut = () => {
+    deleteCookie("user", {
+      path: "/",
+    });
+    router.push("/auth/login");
+  };
+
   return (
     <section>
       <div
-        className="relative flex flex-col content-end justify-end h-[450px] lg:h-[650] px-4 lg:px-14"
+        className="relative flex flex-col content-end justify-end h-[450px] px-4 lg:px-14"
         style={{
-          backgroundImage: `url(/images/pandora.png)`,
+          backgroundImage: `url("https://i.ibb.co/C1XVgvC/planets.gif")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -83,17 +98,26 @@ export default function Account() {
             id="gradient-border"
             className="flex flex-col py-6 px-4 lg:px-9 justify-center content-center h-16 w-full"
           >
-            <p className="font-semibold text-base">Edit Profile</p>
+            <p className="font-semibold text-base">
+              <FontAwesomeIcon icon={faUserEdit} className="mr-8" />
+              Edit Profile
+            </p>
           </div>
           <div
             id="gradient-border"
             className="flex flex-col py-6 px-4 lg:px-9 justify-center content-center h-16 w-full"
           >
-            <Link href="/booking-history" className="font-semibold text-base">My Bookings</Link>
+            <Link href="/booking-history" className="font-semibold text-base">
+              <FontAwesomeIcon icon={faBookBookmark} className="mr-8" />
+              My Bookings
+            </Link>
           </div>
-          <div className="flex flex-col h-16 justify-center content-center w-full border border-red-700 py-6 px-4 lg:px-9">
+          <button
+            onClick={logOut}
+            className="flex flex-col h-16 justify-center content-center w-full border border-red-700 py-6 px-4 lg:px-9"
+          >
             <p className="font-semibold text-base text-red-700">Log Out</p>
-          </div>
+          </button>
         </div>
       </div>
     </section>

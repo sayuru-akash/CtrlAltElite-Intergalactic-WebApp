@@ -19,7 +19,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-wrap items-stretch w-full px-[1.63rem] py-[1.94rem]">
+    <div className="flex flex-wrap items-stretch w-full px-[1.63rem] pt-[12rem] pb-[8rem]">
       <Sidebar navigationLinks={navigationLinks} />
       {children}
     </div>

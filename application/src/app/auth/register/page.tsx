@@ -1,8 +1,18 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 function RegisterPage() {
+  const userCookie = getCookie("user");
+
+  const router = useRouter();
+
+  if (userCookie) {
+    router.push("/account");
+  }
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");

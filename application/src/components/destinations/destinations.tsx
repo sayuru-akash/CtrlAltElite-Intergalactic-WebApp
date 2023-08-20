@@ -17,21 +17,32 @@ interface Destination {
 
 function Destinations() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [filteredDestinations, setFilteredDestinations] = useState<
+    Destination[]
+  >([]);
+
   useEffect(() => {
     fetch("/api/destinations")
       .then((response) => response.json())
-      .then((data) => setDestinations(data));
+      .then((data) => {
+        setDestinations(data);
+        setFilteredDestinations(data);
+      });
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const destinationsPerPage = 2;
 
-  const filteredDestinations = destinations?.filter((destination) =>
-    destination.destination_name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
-  );
+  useEffect(() => {
+    const filteredDestinations = destinations.filter((destination) =>
+      destination.destination_name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredDestinations(filteredDestinations);
+  }, [searchQuery, destinations]);
 
   const indexOfLastDestination = currentPage * destinationsPerPage;
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
