@@ -20,9 +20,9 @@ export default function Account() {
 
   const [user, setUser] = useState<User>();
 
-  if (!userCookie) {
-    router.push("/auth/login");
-  }
+  // if (!userCookie) {
+  //   router.push("/auth/login");
+  // }
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/user?id=${userCookie}`)

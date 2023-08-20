@@ -38,9 +38,9 @@ export default function Checkout() {
   const userCookie = getCookie("user");
   const router = useRouter();
 
-  if (!userCookie) {
-    router.push("/auth/login");
-  }
+  // if (!userCookie) {
+  //   router.push("/auth/login");
+  // }
 
   const [user, setUser] = useState<User>();
 

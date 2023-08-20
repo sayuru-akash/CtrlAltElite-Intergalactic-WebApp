@@ -41,9 +41,9 @@ export default function BookingHistory() {
   const router = useRouter();
   const userCookie = getCookie("user");
   
-  if (!userCookie) {
-    router.push("/auth/login");
-  }
+  // if (!userCookie) {
+  //   router.push("/auth/login");
+  // }
 
   const [user, setUser] = useState<User>();
   const [reservations, setReservations] = useState<Reservation[]>();
