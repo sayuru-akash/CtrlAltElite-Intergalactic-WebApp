@@ -27,11 +27,17 @@ function Destinations() {
   const [searchQuery, setSearchQuery] = useState(" ");
   const destinationsPerPage = 2;
 
-  const filteredDestinations = destinations?.filter((destination) =>
-    destination.destination_name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
-  );
+  let filteredDestinations: Destination[] = [];
+
+  try {
+    filteredDestinations = destinations?.filter((destination) =>
+      destination.destination_name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+  } catch (err) {
+    console.log(err);
+  }
 
   const indexOfLastDestination = currentPage * destinationsPerPage;
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
