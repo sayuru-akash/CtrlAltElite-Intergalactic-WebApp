@@ -24,10 +24,10 @@ function Destinations() {
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(" ");
   const destinationsPerPage = 2;
 
-  const filteredDestinations = destinations.filter((destination) =>
+  const filteredDestinations = destinations?.filter((destination) =>
     destination.destination_name
       .toLowerCase()
       .includes(searchQuery.toLowerCase())
@@ -114,7 +114,10 @@ function Destinations() {
               <p className="font-thin text-xl mb-5">
                 {destination.description.slice(0, 100)}...
               </p>
-              <Link href={`/destination/${destination._id}`} className="text-yellow-200 font-bold">
+              <Link
+                href={`/destination/${destination._id}`}
+                className="text-yellow-200 font-bold"
+              >
                 VIEW FLIGHTS{" "}
                 <FontAwesomeIcon
                   icon={faAngleDoubleRight}
