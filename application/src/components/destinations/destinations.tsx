@@ -25,12 +25,16 @@ function Destinations() {
   );
 
   useEffect(() => {
-    fetch("/api/destinations")
-      .then((response) => response.json())
-      .then((data) => {
-        setDestinations(data);
-        setFilteredDestinations(data);
-      });
+    try {
+      fetch("/api/destinations")
+        .then((response) => response.json())
+        .then((data) => {
+          setDestinations(data);
+          setFilteredDestinations(data);
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,6 +42,11 @@ function Destinations() {
   const destinationsPerPage = 2;
 
   useEffect(() => {
+    if (!destinations) return;
+    if (!searchQuery) {
+      setFilteredDestinations(destinations);
+      return;
+    }
     const filtered = destinations.filter((destination) =>
       destination.destination_name
         .toLowerCase()
@@ -51,6 +60,7 @@ function Destinations() {
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
 
   useEffect(() => {
+    if (!filteredDestinations) return;
     const current = filteredDestinations?.slice(
       indexOfFirstDestination,
       indexOfLastDestination
