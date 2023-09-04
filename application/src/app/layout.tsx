@@ -1,11 +1,11 @@
-import Header from "@/components/header/header";
+import Header from "@/app/components/header/header";
 
 import type { Metadata } from "next";
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
-import Footer from "@/components/footer/footer";
+import Footer from "@/app/components/footer/footer";
 config.autoAddCss = false;
 
 const navigationLinks = [

@@ -1,5 +1,5 @@
-import Destinations from "@/components/destinations/destinations";
-import Hero from "@/components/hero/hero";
+import Destinations from "@/app/components/destinations/destinations";
+import Hero from "@/app/components/hero/hero";
 
 export default function Home() {
   return (
