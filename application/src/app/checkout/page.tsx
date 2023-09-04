@@ -37,15 +37,21 @@ interface User {
 export default function Checkout() {
   const userCookie = getCookie("user");
   const router = useRouter();
-
-  // if (!userCookie) {
-  //   router.push("/auth/login");
-  // }
-
   const [user, setUser] = useState<User>();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/user?id=${userCookie}`)
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!userCookie) {
+      router.push("/auth/login");
+    }
+  }, [isLoaded, router, userCookie]);
+
+  useEffect(() => {
+    fetch(`/api/user?id=${userCookie}`)
       .then(async (res) => {
         const json = await res.json();
         setUser(json);

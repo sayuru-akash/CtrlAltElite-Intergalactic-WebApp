@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +11,7 @@ import {
 
 interface Destination {
   _id: string;
+  departure_name: string;
   destination_name: string;
   destination_cover_img: string;
   description: string;
@@ -39,28 +41,50 @@ function Destinations() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortQuery, setSortQuery] = useState("");
   const destinationsPerPage = 2;
 
   useEffect(() => {
     if (!destinations) return;
-    if (!searchQuery) {
+    let filtered = Array();
+    if (!searchQuery && !sortQuery) {
       setFilteredDestinations(destinations);
       return;
+    } else if (searchQuery && !sortQuery) {
+      filtered = destinations.filter((destination) =>
+        destination.destination_name
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      );
+    } else if (!searchQuery && sortQuery) {
+      filtered = destinations.filter((destination) =>
+        destination.departure_name
+          .toLowerCase()
+          .includes(sortQuery.toLowerCase())
+      );
+    } else {
+      filtered = destinations.filter(
+        (destination) =>
+          destination.destination_name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) &&
+          destination.departure_name
+            .toLowerCase()
+            .includes(sortQuery.toLowerCase())
+      );
     }
-    const filtered = destinations.filter((destination) =>
-      destination.destination_name
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase())
-    );
 
     setFilteredDestinations(filtered);
-  }, [searchQuery, destinations]);
+  }, [searchQuery, sortQuery, destinations]);
 
   const indexOfLastDestination = currentPage * destinationsPerPage;
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
 
   useEffect(() => {
-    if (!filteredDestinations || !filteredDestinations.length) return;
+    if (!filteredDestinations || !filteredDestinations.length) {
+      setCurrentDestinations([]);
+      return;
+    }
     const current = filteredDestinations?.slice(
       indexOfFirstDestination,
       indexOfLastDestination
@@ -99,65 +123,89 @@ function Destinations() {
     setCurrentPage(1);
   };
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSortQuery = event.target.value;
+    setSortQuery(newSortQuery);
+    setCurrentPage(1);
+  };
+
   return (
     <section className="px-4 lg:px-12 py-32" id="destinations">
       <div className="flex flex-col lg:flex-row lg-flex-row gap-8 text-xl font-normal mb-7 mx-4">
         <div className="flex w-full lg:w-1/2 items-center" id="gradient-border">
-          <select className="w-full px-6 py-5 bg-black rounded-md text-white">
-            <option value="earth19996">From: Earth 19996</option>
-            <option value="mars">From: Mars</option>
+          <select
+            className="w-full px-6 py-5 bg-black rounded-md text-white"
+            onChange={(e) => handleSortChange(e)}
+          >
+            <option value="">Select a departure planet</option>
+            <option value="Earth19996">From: Earth 19996</option>
+            <option value="Earth616">From: Earth 616</option>
+            <option value="Earth833">From: Earth 833</option>
+            <option value="Mars">From: Mars</option>
+            <option value="Venus">From: Venus</option>
+            <option value="Mercury">From: Mercury</option>
+            <option value="Jupiter">From: Jupiter</option>
+            <option value="Saturn">From: Saturn</option>
           </select>
           <div className="relative right-4">
             <FontAwesomeIcon icon={faEarthAmericas} className="text-white" />
           </div>
         </div>
-          <div className="flex w-full lg:w-1/2 items-center"  id="gradient-border">
-            <input
-              type="text"
-              className="w-full px-6 py-5 bg-transparent rounded-md text-white focus:outline-none bg-black"
-              placeholder="Search"
-              name="search"
-              id="search"
-              onChange={handleSearchChange}
-            />
-            <div className="relative right-4">
-                <FontAwesomeIcon icon={faSearch} className="text-white" />
-            </div>
+        <div className="flex w-full lg:w-1/2 items-center" id="gradient-border">
+          <input
+            type="text"
+            className="w-full px-6 py-5 bg-transparent rounded-md text-white focus:outline-none bg-black"
+            placeholder="Search"
+            name="search"
+            id="search"
+            onChange={handleSearchChange}
+          />
+          <div className="relative right-4">
+            <FontAwesomeIcon icon={faSearch} className="text-white" />
           </div>
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row flex-wrap justify-between text-xl font-normal text-white">
-        {currentDestinations.map((destination: Destination) => (
-          <div
-            className="flex flex-row h-96 w-full lg:w-1/2 p-4"
-            key={destination?._id}
-          >
+        {(currentDestinations &&
+          currentDestinations.length &&
+          currentDestinations.map((destination: Destination) => (
             <div
-              className="flex flex-col justify-end bg-cover bg-center content-center text-left gradient-border rounded-md py-9 px-5 h-full w-full"
-              id="glowing-border"
-              style={{
-                backgroundImage: `url(${destination?.destination_cover_img})`,
-              }}
+              className="flex flex-row h-96 w-full lg:w-1/2 p-4"
+              key={destination?._id}
             >
-              <p className="font-bold text-2xl mb-3.5">
-                {destination?.destination_name}
-              </p>
-              <p className="font-thin text-xl mb-5">
-                {destination?.description?.slice(0, 100)}...
-              </p>
-              <Link
-                href={`/destination/${destination?._id}`}
-                className="text-yellow-200 font-bold"
+              <div
+                className="flex flex-col justify-end bg-cover bg-center content-center text-left gradient-border rounded-md py-9 px-5 h-full w-full"
+                id="glowing-border"
+                style={{
+                  backgroundImage: `url(${destination?.destination_cover_img})`,
+                }}
               >
-                VIEW FLIGHTS{" "}
-                <FontAwesomeIcon
-                  icon={faAngleDoubleRight}
-                  className="animate-pulse"
-                />
-              </Link>
+                <p className="font-bold text-2xl mb-3.5">
+                  {destination?.destination_name}
+                </p>
+                <p className="font-thin text-xl mb-5">
+                  {destination?.description?.slice(0, 100)}...
+                </p>
+                <Link
+                  href={`/destination/${destination?._id}`}
+                  className="text-yellow-200 font-bold"
+                >
+                  VIEW FLIGHTS{" "}
+                  <FontAwesomeIcon
+                    icon={faAngleDoubleRight}
+                    className="animate-pulse"
+                  />
+                </Link>
+              </div>
             </div>
+          ))) || (
+          <div className="flex flex-row h-96 w-full lg:w-1/2 p-4">
+            <p className="font-bold text-2xl mb-3.5">
+              No destinations found for your query
+            </p>
           </div>
-        ))}
+        )}
       </div>
 
       <div className="mt-4">

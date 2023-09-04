@@ -61,7 +61,7 @@ export default function DestinationSingle({
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/user?id=${userCookie}`)
+    fetch(`/api/user?id=${userCookie}`)
       .then(async (res) => {
         const json = await res.json();
         setUser(json);

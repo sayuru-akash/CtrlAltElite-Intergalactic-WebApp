@@ -2,12 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import connectToDatabase from "@/app/db";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 const userSchema = new mongoose.Schema({
   fname: String,
   lname: String,
   email: String,
+  password: String,
 });
 
 let User: any;
@@ -25,11 +26,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const id = url.searchParams.get("id");
 
     if (id != "" && id != null) {
-      const user = await User.findById(id);
+      const user = await User.findById(id).select("-password");
       return NextResponse.json(user);
     }
 
-    const user = await User.findById(id);
+    const user = await User.findById(id).select("-password");
 
     if (!user) {
       return NextResponse.json({

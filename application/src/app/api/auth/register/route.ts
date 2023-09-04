@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 import connectToDatabase from "@/app/db";
 
 export const dynamic = 'force-dynamic'
@@ -29,6 +30,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
         message: "User already exists",
       });
     }
+    //hash password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(data.password, salt);
+    data.password = hashedPassword;
     const user = await User.create(data);
     return NextResponse.json({ id: user._id });
   } catch (err) {

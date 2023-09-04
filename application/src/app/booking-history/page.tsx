@@ -38,18 +38,24 @@ interface Mode {
 }
 
 export default function BookingHistory() {
-  const router = useRouter();
   const userCookie = getCookie("user");
-  
-  // if (!userCookie) {
-  //   router.push("/auth/login");
-  // }
-
+  const router = useRouter();
   const [user, setUser] = useState<User>();
   const [reservations, setReservations] = useState<Reservation[]>();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/user?id=${userCookie}`)
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!userCookie) {
+      router.push("/auth/login");
+    }
+  }, [isLoaded, router, userCookie]);
+
+  useEffect(() => {
+    fetch(`/api/user?id=${userCookie}`)
       .then(async (res) => {
         const json = await res.json();
         setUser(json);
@@ -60,7 +66,7 @@ export default function BookingHistory() {
   }, [userCookie]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/reservations?id=${user?._id}`)
+    fetch(`/api/reservations?id=${user?._id}`)
       .then(async (res) => {
         const json = await res.json();
         setReservations(json);

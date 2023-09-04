@@ -68,7 +68,7 @@ function RegisterPage() {
       password: password,
     };
 
-    fetch("http://localhost:3000/api/auth/register", {
+    fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -152,7 +152,7 @@ function RegisterPage() {
               id="password"
               className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-6">
@@ -164,7 +164,7 @@ function RegisterPage() {
               id="confirmPassword"
               className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none"
               value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
           <button
