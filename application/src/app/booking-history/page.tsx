@@ -88,7 +88,7 @@ export default function BookingHistory() {
   };
 
   useEffect(() => {
-    if (reservations) {
+    if (reservations && reservations.length > 0) {
       const reservationDetails = reservations?.map((reservation) =>
         fetchReservationDetails(reservation)
       );
@@ -123,7 +123,7 @@ export default function BookingHistory() {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row flex-wrap justify-between w-full text-xl font-normal text-white mt-16">
-        {reservations?.map((reservation) => (
+        {reservations && reservations.length > 0 && reservations?.map((reservation) => (
           <div
             className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8"
             key={reservation?._id}
