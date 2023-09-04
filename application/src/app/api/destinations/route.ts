@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 
 const destinationSchema = new mongoose.Schema({
   destination_name: String,
