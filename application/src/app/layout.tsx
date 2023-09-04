@@ -15,7 +15,7 @@ const navigationLinks = [
 ];
 
 export const metadata: Metadata = {
-  title: "Inertgalactic",
+  title: "Intergalactic Travels",
 };
 
 export default function RootLayout({

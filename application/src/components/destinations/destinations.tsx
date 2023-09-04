@@ -60,7 +60,7 @@ function Destinations() {
   const indexOfFirstDestination = indexOfLastDestination - destinationsPerPage;
 
   useEffect(() => {
-    if (!filteredDestinations) return;
+    if (!filteredDestinations || !filteredDestinations.length) return;
     const current = filteredDestinations?.slice(
       indexOfFirstDestination,
       indexOfLastDestination
@@ -111,25 +111,23 @@ function Destinations() {
             <FontAwesomeIcon icon={faEarthAmericas} className="text-white" />
           </div>
         </div>
-        <div
-          className="flex w-full lg:w-1/2 relative items-center"
-          id="gradient-border"
-        >
-          <input
-            type="text"
-            className="w-full px-6 py-5 bg-transparent rounded-md text-white focus:outline-none bg-black"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <div className="relative right-4">
-            <FontAwesomeIcon icon={faSearch} className="text-white" />
+          <div className="flex w-full lg:w-1/2 items-center"  id="gradient-border">
+            <input
+              type="text"
+              className="w-full px-6 py-5 bg-transparent rounded-md text-white focus:outline-none bg-black"
+              placeholder="Search"
+              name="search"
+              id="search"
+              onChange={handleSearchChange}
+            />
+            <div className="relative right-4">
+                <FontAwesomeIcon icon={faSearch} className="text-white" />
+            </div>
           </div>
-        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row flex-wrap justify-between text-xl font-normal text-white">
-        {currentDestinations.map((destination) => (
+        {currentDestinations.map((destination: Destination) => (
           <div
             className="flex flex-row h-96 w-full lg:w-1/2 p-4"
             key={destination?._id}
@@ -161,6 +159,7 @@ function Destinations() {
           </div>
         ))}
       </div>
+
       <div className="mt-4">
         <nav
           className="flex justify-between items-center"

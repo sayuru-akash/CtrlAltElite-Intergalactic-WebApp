@@ -37,10 +37,16 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     const url = new URL(req.nextUrl);
     const id = url.searchParams.get("id");
+    const search = url.searchParams.get("search");
 
     if (id != "" && id != null) {
       const destination = await Destination.findById(id);
       return NextResponse.json(destination);
+    } else if (search != "" && search != null) {
+      const destinations = await Destination.find({
+        destination_name: { $regex: search, $options: "i" },
+      });
+      return NextResponse.json(destinations);
     }
     const destinations = await Destination.find();
     return NextResponse.json(destinations);
