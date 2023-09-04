@@ -50,6 +50,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   } catch (err) {
     return NextResponse.json({
       message: "Error getting destinations from the database",
+      error: err,
     });
   }
 }
