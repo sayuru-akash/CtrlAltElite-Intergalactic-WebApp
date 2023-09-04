@@ -89,11 +89,11 @@ export default function BookingHistory() {
 
   useEffect(() => {
     if (reservations) {
-      const reservationDetails = reservations.map((reservation) =>
+      const reservationDetails = reservations?.map((reservation) =>
         fetchReservationDetails(reservation)
       );
       Promise.all(reservationDetails).then((data) => {
-        const reservationsWithDetails = reservations.map((reservation, i) => {
+        const reservationsWithDetails = reservations?.map((reservation, i) => {
           return {
             ...reservation,
             destination: data[i].destination,
