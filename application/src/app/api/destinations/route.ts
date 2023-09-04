@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
 
 const destinationSchema = new mongoose.Schema({
   destination_name: String,
@@ -24,10 +24,7 @@ let dbConnection: any;
 
 async function connectToDatabase() {
   if (!dbConnection) {
-    dbConnection = await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
+    dbConnection = await mongoose.connect(uri);
   }
 }
 
