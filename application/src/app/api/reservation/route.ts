@@ -5,12 +5,18 @@ import connectToDatabase from "@/app/db";
 export const dynamic = 'force-dynamic'
 
 const reservationSchema = new mongoose.Schema({
+  fname: String,
+  lname: String,
+  email: String,
+  uin: String,
+  residency: String,
   destination_id: String,
   mode_id: String,
   user_id: String,
   departure_date: String,
   passengers: Number,
-  price: Number,
+  total: Number,
+  status: String,
 });
 
 let Reservation: any;
