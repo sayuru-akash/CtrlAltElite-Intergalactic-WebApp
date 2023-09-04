@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
+import connectToDatabase from "@/app/db";
 
 const reservationSchema = new mongoose.Schema({
   fname: String,
@@ -36,19 +37,6 @@ try {
   Checkout = mongoose.model("checkouts");
 } catch {
   Checkout = mongoose.model("checkouts", checkoutSchema);
-}
-
-const uri: string =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/intergalactic-db";
-let dbConnection: any;
-
-async function connectToDatabase() {
-  if (!dbConnection) {
-    dbConnection = await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
-  }
 }
 
 export async function POST(req: NextRequest, res: NextResponse) {

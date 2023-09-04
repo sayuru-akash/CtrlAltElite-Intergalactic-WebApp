@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
+import connectToDatabase from "@/app/db";
 
 const reservationSchema = new mongoose.Schema({
   destination_id: String,
@@ -16,19 +17,6 @@ try {
   Reservation = mongoose.model("reservations");
 } catch {
   Reservation = mongoose.model("reservations", reservationSchema);
-}
-
-const uri: string =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/intergalactic-db";
-let dbConnection: any;
-
-async function connectToDatabase() {
-  if (!dbConnection) {
-    dbConnection = await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
-  }
 }
 
 export async function GET(req: NextRequest, res: NextResponse) {

@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
+import connectToDatabase from "@/app/db";
+
+export const dynamic = 'force-dynamic'
 
 const destinationSchema = new mongoose.Schema({
   destination_name: String,
@@ -16,19 +19,6 @@ try {
   Destination = mongoose.model("destinations");
 } catch {
   Destination = mongoose.model("destinations", destinationSchema);
-}
-
-const uri: string =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/intergalactic-db";
-let dbConnection: any;
-
-async function connectToDatabase() {
-  if (!dbConnection) {
-    dbConnection = await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
-  }
 }
 
 export async function GET(req: NextRequest, res: NextResponse) {
