@@ -20,18 +20,18 @@
   border-image-slice: 1 !important;
 }
 
-#gradient-button {
-  background: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
+.gradient-button {
+  background: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%) !important;
 }
 
-#text-gradient {
+.text-gradient {
   background: var(
     --gradient,
     linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%)
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 .clip-cut::before {
