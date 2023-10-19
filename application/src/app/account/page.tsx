@@ -85,15 +85,13 @@ export default function Account() {
       <div className="flex flex-col lg:flex-row mx-4 lg:mx-14 gap-20 my-6 lg:my-16 text-white">
         <div className="flex flex-col lg:flex-row justify-between content-center gap-8 w-full lg:w-1/2">
           <div
-            id="gradient-border"
-            className="hidden lg:flex flex-col py-14 pl-5 justify-center content-center h-48 w-full"
+            className="gradient-border hidden lg:flex flex-col py-14 pl-5 justify-center content-center h-48 w-full"
           >
             <p className="font-semibold text-lg mb-3.5">Distance Travelled</p>
             <p className="text-blue-200 font-semibold text-4xl"> Coming Soon</p>
           </div>
           <div
-            id="gradient-border"
-            className="hidden lg:flex flex-col py-14 pl-5 h-48 justify-center content-center w-full"
+            className="gradient-border hidden lg:flex flex-col py-14 pl-5 h-48 justify-center content-center w-full"
           >
             <p className="font-semibold text-lg mb-3.5">Points Collected</p>
             <p className="text-blue-200 font-semibold text-4xl"> Coming Soon</p>
@@ -101,8 +99,7 @@ export default function Account() {
         </div>
         <div className="flex flex-col justify-between content-center gap-8 w-full lg:w-1/2">
           <div
-            id="gradient-border"
-            className="flex flex-col py-6 px-4 lg:px-9 justify-center content-center h-16 w-full"
+            className="gradient-border flex flex-col py-6 px-4 lg:px-9 justify-center content-center h-16 w-full"
           >
             <p className="font-semibold text-base">
               <FontAwesomeIcon icon={faUserEdit} className="mr-8" />
@@ -110,8 +107,7 @@ export default function Account() {
             </p>
           </div>
           <div
-            id="gradient-border"
-            className="flex flex-col py-6 px-4 lg:px-9 justify-center content-center h-16 w-full"
+            className="gradient-border flex flex-col py-6 px-4 lg:px-9 justify-center content-center h-16 w-full"
           >
             <Link href="/booking-history" className="font-semibold text-base">
               <FontAwesomeIcon icon={faBookBookmark} className="mr-8" />
