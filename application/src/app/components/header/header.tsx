@@ -25,8 +25,7 @@ function Header({ navigationLinks }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav className="flex flex-wrap items-stretch w-full px-7 py-7">
         <div
-          className="flex flex-wrap items-stretch w-full px-7 py-7 border-gradient bg-black bg-opacity-80 shadow-lg"
-          id="glowing-border"
+          className="glowing-border flex flex-wrap items-stretch w-full px-7 py-7 border-gradient bg-black bg-opacity-80 shadow-lg"
         >
           <div className="flex flex-wrap justify-between items-center w-3/4 lg:w-1/4">
             <Link href="/" passHref className="flex items-center">

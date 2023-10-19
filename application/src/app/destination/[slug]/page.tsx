@@ -131,8 +131,7 @@ export default function DestinationSingle({
             setShowSchedule(true);
             setShowAbout(false);
           }}
-          className="relative bg-black opacity-75 backdrop-blur-2 w-full lg:w-96 h-32 lg:h-16 flex items-center justify-center"
-          id="glowing-border"
+          className="glowing-border relative bg-black opacity-75 backdrop-blur-2 w-full lg:w-96 h-32 lg:h-16 flex items-center justify-center"
         >
           Schedule Your Flight
         </button>
@@ -142,8 +141,7 @@ export default function DestinationSingle({
             setShowAbout(true);
             setShowSchedule(false);
           }}
-          className="relative bg-black opacity-75 backdrop-blur-2 w-full lg:w-96 h-16 flex items-center justify-center mx-9"
-          id="glowing-border"
+          className="glowing-border relative bg-black opacity-75 backdrop-blur-2 w-full lg:w-96 h-16 flex items-center justify-center mx-9"
         >
           About {destination?.destination_name.slice(0, 8)}
         </button>
@@ -155,8 +153,7 @@ export default function DestinationSingle({
               Search Flights by Departure date and number of passengers
             </p>
             <div
-              className="flex flex-col lg:flex-row justify-between content-center px-4 lg:px-16 py-6 text-white "
-              id="glowing-border"
+              className="glowing-border flex flex-col lg:flex-row justify-between content-center px-4 lg:px-16 py-6 text-white"
             >
               <div className="flex flex-row justify-between items-center">
                 <FontAwesomeIcon
@@ -239,8 +236,7 @@ export default function DestinationSingle({
                 key={transportMode._id}
               >
                 <div
-                  id="glowing-border"
-                  className="flex flex-row w-full justify-between"
+                  className="glowing-border flex flex-row w-full justify-between"
                 >
                   <div className="flex flex-col justify-center content-center w-1/2">
                     <Image

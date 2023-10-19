@@ -129,8 +129,7 @@ export default function BookingHistory() {
             key={reservation?._id}
           >
             <div
-              className="flex flex-col justify-start items-start text-left gradient-border rounded-md py-9 px-5 h-96 w-full"
-              id="glowing-border"
+              className="glowing-border flex flex-col justify-start items-start text-left gradient-border rounded-md py-9 px-5 h-96 w-full"
               style={{
                 backgroundImage: `url(${reservation?.destination?.destination_cover_img})`,
                 backgroundSize: "cover",
