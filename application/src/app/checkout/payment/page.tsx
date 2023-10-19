@@ -17,8 +17,7 @@ export default function Payment() {
       </div>
       <div className="flex flex-col lg:flex-row mx-4 lg:mx-14 gap-20 my-4 lg:my-16 text-white ">
         <div
-          id="gradient-border"
-          className="p-4 lg:p-16  px-4 lg:px-28 flex flex-row justify-between lg:hidden"
+          className="gradient-border p-4 lg:p-16  px-4 lg:px-28 flex flex-row justify-between lg:hidden"
         >
           <div className="flex-flex-col">
             <Image
@@ -78,8 +77,7 @@ export default function Payment() {
         </div>
         <div className="flex flex-col w-full lg:w-1/2 sm :hidden">
           <div
-            id="gradient-border"
-            className="pt-16 pb-14 px-10 flex flex-row justify-between"
+            className="gradient-border pt-16 pb-14 px-10 flex flex-row justify-between"
           >
             <div className="flex flex-col">
               <p className="font-bold text-4xl  mb-7">
@@ -109,8 +107,7 @@ export default function Payment() {
             </div>
           </div>
           <div
-            className="flex flex-col content-center justify-center px-7"
-            id="gradient-border"
+            className="gradient-border flex flex-col content-center justify-center px-7"
           >
             <div className="flex flex-row justify-between items-center mt-10 mb-5">
               <p className="text-xl font-light">Total</p>

@@ -78,8 +78,7 @@ export default function Success() {
           </div>
           <Link
             href="/account"
-            className="w-full py-7 px-0 lg:px-28 font-bold text-xl rounded-md mb-14 align-middle items-center flex flex-row justify-center"
-            id="glowing-border"
+            className="glowing-border w-full py-7 px-0 lg:px-28 font-bold text-xl rounded-md mb-14 align-middle items-center flex flex-row justify-center"
           >
             Visit Profile &nbsp;
             <FontAwesomeIcon
@@ -90,8 +89,7 @@ export default function Success() {
         </div>
         <div className="flex flex-col w-full lg:w-1/2">
           <div
-            id="gradient-border"
-            className="pt-16 pb-14 px-4 lg:px-10 flex flex-row justify-between"
+            className="gradient-border pt-16 pb-14 px-4 lg:px-10 flex flex-row justify-between"
           >
             <div className="flex flex-col">
               <p className="font-bold text-2xl mb-7">
@@ -129,8 +127,7 @@ export default function Success() {
             </div>
           </div>
           <div
-            className="flex flex-col content-center justify-center px-7"
-            id="gradient-border"
+            className="gradient-border flex flex-col content-center justify-center px-7"
           >
             <div className="flex flex-row justify-between items-center mt-10 mb-5">
               <p className="text-xl font-light">Total</p>

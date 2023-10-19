@@ -132,7 +132,7 @@ function Destinations() {
   return (
     <section className="px-4 lg:px-12 py-32" id="destinations">
       <div className="flex flex-col lg:flex-row lg-flex-row gap-8 text-xl font-normal mb-7 mx-4">
-        <div className="flex w-full lg:w-1/2 items-center" id="gradient-border">
+        <div className="flex w-full lg:w-1/2 items-center gradient-border">
           <select
             className="w-full px-6 py-5 bg-black rounded-md text-white"
             onChange={(e) => handleSortChange(e)}
@@ -151,7 +151,7 @@ function Destinations() {
             <FontAwesomeIcon icon={faEarthAmericas} className="text-white" />
           </div>
         </div>
-        <div className="flex w-full lg:w-1/2 items-center" id="gradient-border">
+        <div className="flex w-full lg:w-1/2 items-center gradient-border">
           <input
             type="text"
             className="w-full px-6 py-5 bg-transparent rounded-md text-white focus:outline-none bg-black"
@@ -175,8 +175,7 @@ function Destinations() {
               key={destination?._id}
             >
               <div
-                className="flex flex-col justify-end bg-cover bg-center content-center text-left gradient-border rounded-md py-9 px-5 h-full w-full"
-                id="glowing-border"
+                className="glowing-border flex flex-col justify-end bg-cover bg-center content-center text-left gradient-border rounded-md py-9 px-5 h-full w-full"
                 style={{
                   backgroundImage: `url(${destination?.destination_cover_img})`,
                 }}

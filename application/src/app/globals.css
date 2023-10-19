@@ -7,24 +7,28 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-#glowing-border {
-  border: 1px solid;
-  border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
-  border-image-slice: 1;
-  filter: drop-shadow(4px 4px 22px rgba(0, 194, 255, 0.37));
+.glowing-border {
+  border: 1px solid !important;
+  border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%) !important;
+  border-image-slice: 1 !important;
+  filter: drop-shadow(4px 4px 22px rgba(0, 194, 255, 0.37)) !important;
 }
 
-#gradient-border {
-  border: 1px solid;
-  border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
-  border-image-slice: 1;
+.gradient-border {
+  border: 1px solid !important;
+  border-image: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%) !important;
+  border-image-slice: 1 !important;
 }
 
 #gradient-button {
   background: linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%);
 }
-#text-gradient{
-  background: var(--gradient, linear-gradient(135deg, #00C2FF 0%, #AE01FF 100%));
+
+#text-gradient {
+  background: var(
+    --gradient,
+    linear-gradient(135deg, #00c2ff 0%, #ae01ff 100%)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -33,7 +37,7 @@
 .clip-cut::before {
   content: "";
   position: absolute;
-  top: 54.8px; 
+  top: 54.8px;
   right: -1px;
   width: 34px;
   height: 34px;
